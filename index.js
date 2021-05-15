@@ -220,3 +220,6 @@ class CuboidMakerTwo{
     CuboidMaker,
     CuboidMakerTwo
   }
+
+// Codegrade Webhooks test
+const myName = "Alieze"
