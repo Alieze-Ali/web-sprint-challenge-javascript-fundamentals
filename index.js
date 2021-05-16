@@ -16,7 +16,7 @@ function myFunction() {
 myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
-
+//nestedFunction can access the varible internal because of scope. Functions are allowed to reach up and out of their scope to access information requested - but they can not reach down into another scope to pull info out.
 
 
 
@@ -28,9 +28,13 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(num) {
+  let counter = 0;
+  for (let i=0; i<num; i++){
+    counter = counter + i + 1;
+    //counter += i + 1;
+  }
+    return counter;
   }
  
 
@@ -56,8 +60,13 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
+  function animalNames(arr){
     /*Your Code Here*/
+    let displayNames = [];
+    arr.forEach((item, i) => {
+      displayNames.push(`name: ${arr[i].animal_name}, scientific: ${arr[i].scientific_name}`)
+    });
+    return displayNames;
   }
   
 
@@ -67,18 +76,26 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
+  function lowerCaseNames(arr) {
     /*Your Code Here*/
+    const lowCase = arr.map((item) => {
+       return item.animal_name.toLowerCase();
+    });
+    return lowCase;
   }
-  
+  // QUESTION --- How can I return something twice????
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
+  function lowPopulationAnimals(arr){
     /*Your Code Here*/
+     let lowPop = arr.filter(function(item, i){
+       return arr[i].population < 5;
+     });
+    return lowPop;
   }
   
 
@@ -88,8 +105,12 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
+  function USApop(arr){
     /*Your Code Here*/
+    let newArr = arr.reduce(function(acc, item){
+      return item.population + acc
+    }, 0);
+    return newArr;
   }
   
   
@@ -221,5 +242,5 @@ class CuboidMakerTwo{
     CuboidMakerTwo
   }
 
-// Codegrade Webhooks test
+// Codegrade Webhooks
 const myName = "Alieze"
